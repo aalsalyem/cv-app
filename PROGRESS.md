@@ -2,9 +2,11 @@
 
 ## Current Status: LIVE at https://salyem.dev
 
+## Phase 2 Status: IN PROGRESS - Admin Console with Spring Boot
+
 ---
 
-## Completed Tasks
+## Phase 1: Completed
 
 ### 1. React CV App (DONE)
 - Created React + TypeScript + Vite app
@@ -37,61 +39,83 @@
 
 ---
 
-## Next Phase: Admin Console
+## Phase 2: Admin Console (IN PROGRESS)
 
-### Requirements
-- `/` - Public CV page (current)
-- `/console` - Admin panel to manage CV content
-- PostgreSQL database (Supabase)
-- Google OAuth authentication
-- Headless UI components
-
-### Pending Tasks
-
-#### 1. Set up Supabase Project
-- [ ] User creates Supabase account at https://supabase.com
-- [ ] Create new project named `cv-app`
-- [ ] Get Project URL and anon key
-- [ ] Save database password
-
-#### 2. Create Database Schema
-```sql
--- Tables needed:
-- personal_info (name, email, phone, location, linkedin, photo_url)
-- work_experience (id, title, company, start_date, end_date, responsibilities[], projects)
-- education (id, degree, school, start_date, end_date)
-- skills (id, name, category)
-- certificates (id, name, issuer, date)
-- languages (id, name, proficiency)
-- theme_settings (primary_color, accent_color, etc.)
+### Architecture
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   React     │────▶│ Spring Boot │────▶│ PostgreSQL  │
+│  Frontend   │     │   Backend   │     │  Database   │
+└─────────────┘     └─────────────┘     └─────────────┘
+     :80                 :8081              :5432
+                           │
+                  ┌────────┴────────┐
+                  │  Google OAuth2  │
+                  └─────────────────┘
 ```
 
-#### 3. Configure Google OAuth
-- [ ] Enable Google provider in Supabase Auth
-- [ ] Set up Google Cloud OAuth credentials
-- [ ] Configure allowed redirect URLs
+### Completed
+- [x] Install PostgreSQL on Droplet
+- [x] Create database and user (cvapp)
+- [x] Create database schema (all tables)
+- [x] Seed database with current CV data
+- [x] Secure passwords and create vault.md
+- [x] Create Spring Boot project structure
+- [x] Create all JPA entities
 
-#### 4. Install Dependencies
-```bash
-npm install @supabase/supabase-js @headlessui/react @heroicons/react react-router-dom
+### Pending
+- [ ] Create JPA repositories
+- [ ] Create REST API endpoints
+  - GET /api/cv (public - fetch all CV data)
+  - PUT /api/admin/* (protected - edit CV)
+- [ ] Configure Google OAuth2 (need Google Cloud credentials)
+- [ ] Create security config (JWT + OAuth)
+- [ ] Update React frontend:
+  - Add React Router
+  - Create /console admin page
+  - Add Headless UI forms
+  - Connect to Spring Boot API
+- [ ] Create Dockerfile for backend
+- [ ] Deploy backend to server
+
+---
+
+## Database Schema
+
+Tables created on PostgreSQL (droplet):
+- `personal_info` - name, email, phone, location, linkedin, photo, objective
+- `work_experience` - title, company, dates, responsibilities[], projects
+- `education` - degree, field, school, dates
+- `skills` - name, category
+- `certificates` - name, issuer, date
+- `languages` - name, proficiency
+- `strengths` - name
+- `users` - email, google_id, is_admin
+- `theme_settings` - dark/light colors
+
+All tables seeded with current CV data.
+
+---
+
+## Project Structure
+
 ```
-
-#### 5. Build Admin Console
-- [ ] Create React Router setup
-- [ ] Build protected /console route
-- [ ] Create forms for each CV section
-- [ ] Implement CRUD operations
-- [ ] Add photo upload to Supabase Storage
-
-#### 6. Update Public CV
-- [ ] Fetch CV data from Supabase on load
-- [ ] Cache data for performance
-- [ ] Fallback to static data if DB unavailable
-
-#### 7. Deploy Updates
-- [ ] Push to GitHub
-- [ ] Rebuild Docker on server
-- [ ] Test admin panel
+cv-app/
+├── src/                    # React frontend
+├── backend/                # Spring Boot (NEW)
+│   ├── pom.xml
+│   └── src/main/java/dev/salyem/cv/
+│       ├── CvApplication.java
+│       ├── entity/         # JPA entities (DONE)
+│       ├── repository/     # JPA repositories (TODO)
+│       ├── service/        # Business logic (TODO)
+│       ├── controller/     # REST endpoints (TODO)
+│       ├── config/         # Security config (TODO)
+│       └── dto/            # Data transfer objects (TODO)
+├── vault.md               # Credentials (gitignored)
+├── PROGRESS.md            # This file
+└── Dockerfile             # Frontend Docker
+```
 
 ---
 
@@ -101,32 +125,51 @@ npm install @supabase/supabase-js @headlessui/react @heroicons/react react-route
 # SSH to server
 ssh root@209.38.252.236
 
-# Redeploy after changes
+# Redeploy frontend
 cd /root/cv-app && git pull && docker build -t cv-app . && docker stop cv-app && docker rm cv-app && docker run -d -p 8080:80 --name cv-app --restart always cv-app
+
+# PostgreSQL
+sudo -u postgres psql -d cvapp
+
+# Check running services
+docker ps
+systemctl status postgresql
 ```
 
 ---
 
-## Credentials & Config
+## Credentials
 
-- **Domain**: salyem.dev (GoDaddy)
-- **Server IP**: 209.38.252.236
-- **GitHub**: https://github.com/aalsalyem/cv-app
-- **DigitalOcean API Token**: (stored in doctl)
-- **Supabase**: PENDING - user needs to create account
+See `vault.md` (gitignored) for:
+- Database credentials
+- Server access
+- API tokens
+- JWT secret
 
 ---
 
 ## Resume Instructions
 
 When continuing this project:
-1. User provides Supabase Project URL and anon key
-2. Run: `npm install @supabase/supabase-js @headlessui/react @heroicons/react react-router-dom`
-3. Create `.env` with Supabase credentials
-4. Create database schema in Supabase
-5. Build admin console components
-6. Update App.tsx with React Router
-7. Deploy to server
+
+1. **Read this file** to understand current state
+2. **Read vault.md** for credentials
+3. **Continue with pending tasks:**
+   - Create repositories in `backend/src/main/java/dev/salyem/cv/repository/`
+   - Create services in `backend/src/main/java/dev/salyem/cv/service/`
+   - Create controllers in `backend/src/main/java/dev/salyem/cv/controller/`
+   - Configure security in `backend/src/main/java/dev/salyem/cv/config/`
+4. **Set up Google OAuth:**
+   - Go to https://console.cloud.google.com
+   - Create OAuth credentials
+   - Add to vault.md and application.yml
+5. **Update React frontend:**
+   - Install: `npm install react-router-dom @headlessui/react @heroicons/react axios`
+   - Add routing and admin console
+6. **Deploy:**
+   - Create backend Dockerfile
+   - Deploy backend to server on port 8081
+   - Update nginx config to proxy /api to backend
 
 ---
 

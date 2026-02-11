@@ -1,3 +1,10 @@
+# Secrets and credentials
+vault.md
+.env
+.env.*
+*.pem
+*.key
+
 # Logs
 logs
 *.log
