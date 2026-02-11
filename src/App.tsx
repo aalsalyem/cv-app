@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import profilePhoto from './assets/profile.jpg'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -19,13 +20,16 @@ function App() {
       </button>
 
       <header className="header">
-        <h1>Abdulaziz Mohammed Alsalyem</h1>
-        <div className="contact-info">
-          <span>Riyadh, Saudi Arabia</span>
-          <span className="separator">|</span>
-          <a href="mailto:ams.8@msn.com">ams.8@msn.com</a>
-          <span className="separator">|</span>
-          <a href="https://www.linkedin.com/in/aalsalyem/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <img src={profilePhoto} alt="Abdulaziz Alsalyem" className="profile-photo" />
+        <div className="header-info">
+          <h1>Abdulaziz Mohammed Alsalyem</h1>
+          <div className="contact-info">
+            <span>Riyadh, Saudi Arabia</span>
+            <span className="separator">|</span>
+            <a href="mailto:ams.8@msn.com">ams.8@msn.com</a>
+            <span className="separator">|</span>
+            <a href="https://www.linkedin.com/in/aalsalyem/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
         </div>
       </header>
 
@@ -46,10 +50,22 @@ function App() {
         <div className="experience-item">
           <div className="experience-header">
             <div>
+              <h3>General Manager of Product Integration</h3>
+              <p className="company">Saudi Data & AI Authority (SDAIA)</p>
+            </div>
+            <div className="date">03/2025 - Present</div>
+          </div>
+          <ul>
+          </ul>
+        </div>
+
+        <div className="experience-item">
+          <div className="experience-header">
+            <div>
               <h3>Quality Assurance Manager</h3>
               <p className="company">Saudi Data & AI Authority (SDAIA)</p>
             </div>
-            <div className="date">07/2020 - Present</div>
+            <div className="date">07/2020 - 03/2025</div>
           </div>
           <ul>
             <li>Build quality team</li>
