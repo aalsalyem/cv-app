@@ -63,6 +63,14 @@ function CvPage() {
             <div className="date">03/2025 - Present</div>
           </div>
           <ul>
+            <li>Lead the development and governance of shared products to enable enterprise integration, while standardizing processes, templates, and methodologies to enhance cross-departmental operational efficiency and scalability</li>
+            <li>Establish and institutionalize a unified Design System to standardize UI/UX across all products, strengthening visual identity, improving usability, and ensuring consistency at the organizational level</li>
+            <li>Engage with executive stakeholders and business units to assess strategic needs, drive product enhancements, and lead the innovation and delivery of new digital products aligned with organizational objectives</li>
+            <li>Direct the design and implementation of scalable technical solutions supporting enterprise platforms, ensuring high availability, quality, and operational stability</li>
+            <li>Drive continuous innovation by evaluating emerging technologies, monitoring industry trends, and aligning product strategy with global best practices and digital transformation objectives</li>
+            <li>Oversee quality assurance strategy by implementing automated testing frameworks and monitoring product performance in production environments to ensure reliability, performance, and service excellence</li>
+            <li>Define and execute product vision, roadmap, and strategic direction, including scope definition, prioritization, and delivery of high-impact product capabilities</li>
+            <li>Govern release management lifecycle, including approving production readiness, authorizing deployments, and ensuring proper documentation, compliance, and stakeholder alignment</li>
           </ul>
         </div>
 
@@ -85,7 +93,12 @@ function CvPage() {
             <li>Providing comprehensive weekly report on current status and expectations</li>
             <li>Make sure the content of the product is working properly in the production by building the needed automating tools</li>
           </ul>
-          <p className="projects"><strong>Projects:</strong> Classified projects (2)</p>
+          <div className="projects">
+            <span className="projects-label">Projects:</span>
+            <div className="projects-tags">
+              <span className="project-tag classified">Classified Projects</span>
+            </div>
+          </div>
         </div>
 
         <div className="experience-item">
@@ -104,7 +117,13 @@ function CvPage() {
             <li>Contribute to each project delivery phase (analysis, development, test and operations) in different roles</li>
             <li>Deliver new features in Agile life-cycle</li>
           </ul>
-          <p className="projects"><strong>Projects:</strong> Classified project, Tawakkalna</p>
+          <div className="projects">
+            <span className="projects-label">Projects:</span>
+            <div className="projects-tags">
+              <span className="project-tag">Tawakkalna</span>
+              <span className="project-tag classified">Classified Projects</span>
+            </div>
+          </div>
         </div>
 
         <div className="experience-item">
@@ -121,7 +140,16 @@ function CvPage() {
             <li>Contribute to build Yakeen generator tool to minimize the development time</li>
             <li>Deliver new features in Agile life-cycle</li>
           </ul>
-          <p className="projects"><strong>Projects:</strong> Yakeen, Yakeen Generator, Fingerprint, Mobile Number Online Transfer (MNOT), Zawil</p>
+          <div className="projects">
+            <span className="projects-label">Projects:</span>
+            <div className="projects-tags">
+              <span className="project-tag">Yakeen</span>
+              <span className="project-tag">Yakeen Generator</span>
+              <span className="project-tag">Fingerprint</span>
+              <span className="project-tag">MNOT</span>
+              <span className="project-tag">Zawil</span>
+            </div>
+          </div>
         </div>
       </section>
 
