@@ -62,20 +62,21 @@
 - [x] Secure passwords and create vault.md
 - [x] Create Spring Boot project structure
 - [x] Create all JPA entities
-
-### Pending
-- [ ] Create JPA repositories
-- [ ] Create REST API endpoints
+- [x] Create JPA repositories
+- [x] Create REST API endpoints
   - GET /api/cv (public - fetch all CV data)
   - PUT /api/admin/* (protected - edit CV)
-- [ ] Configure Google OAuth2 (need Google Cloud credentials)
-- [ ] Create security config (JWT + OAuth)
-- [ ] Update React frontend:
+- [x] Configure Google OAuth2 + JWT security
+- [x] Update React frontend:
   - Add React Router
   - Create /console admin page
-  - Add Headless UI forms
+  - Add forms for editing CV
   - Connect to Spring Boot API
-- [ ] Create Dockerfile for backend
+- [x] Create Dockerfile for backend
+- [x] Make frontend responsive (mobile, tablet, web)
+
+### Pending
+- [ ] Set up Google Cloud OAuth credentials
 - [ ] Deploy backend to server
 
 ---
@@ -102,16 +103,21 @@ All tables seeded with current CV data.
 ```
 cv-app/
 ├── src/                    # React frontend
-├── backend/                # Spring Boot (NEW)
+│   ├── pages/              # CvPage, ConsolePage
+│   ├── services/           # API service
+│   ├── context/            # AuthContext
+│   └── components/         # Reusable components
+├── backend/                # Spring Boot
 │   ├── pom.xml
+│   ├── Dockerfile
 │   └── src/main/java/dev/salyem/cv/
 │       ├── CvApplication.java
-│       ├── entity/         # JPA entities (DONE)
-│       ├── repository/     # JPA repositories (TODO)
-│       ├── service/        # Business logic (TODO)
-│       ├── controller/     # REST endpoints (TODO)
-│       ├── config/         # Security config (TODO)
-│       └── dto/            # Data transfer objects (TODO)
+│       ├── entity/         # JPA entities
+│       ├── repository/     # JPA repositories
+│       ├── service/        # CvService, JwtService, UserService
+│       ├── controller/     # CvController, AdminController, AuthController
+│       ├── config/         # SecurityConfig, JWT filter, OAuth handler
+│       └── dto/            # CvDto
 ├── vault.md               # Credentials (gitignored)
 ├── PROGRESS.md            # This file
 └── Dockerfile             # Frontend Docker
@@ -154,23 +160,16 @@ When continuing this project:
 
 1. **Read this file** to understand current state
 2. **Read vault.md** for credentials
-3. **Continue with pending tasks:**
-   - Create repositories in `backend/src/main/java/dev/salyem/cv/repository/`
-   - Create services in `backend/src/main/java/dev/salyem/cv/service/`
-   - Create controllers in `backend/src/main/java/dev/salyem/cv/controller/`
-   - Configure security in `backend/src/main/java/dev/salyem/cv/config/`
-4. **Set up Google OAuth:**
+3. **Set up Google OAuth:**
    - Go to https://console.cloud.google.com
-   - Create OAuth credentials
-   - Add to vault.md and application.yml
-5. **Update React frontend:**
-   - Install: `npm install react-router-dom @headlessui/react @heroicons/react axios`
-   - Add routing and admin console
-6. **Deploy:**
-   - Create backend Dockerfile
-   - Deploy backend to server on port 8081
-   - Update nginx config to proxy /api to backend
+   - Create OAuth 2.0 credentials
+   - Set authorized redirect URI: `https://salyem.dev/api/auth/google/callback`
+   - Add client-id and client-secret to environment variables
+4. **Deploy backend:**
+   - Build: `cd backend && docker build -t cv-backend .`
+   - Run: `docker run -d -p 8081:8081 --name cv-backend --restart always -e DB_HOST=localhost -e GOOGLE_CLIENT_ID=xxx -e GOOGLE_CLIENT_SECRET=xxx cv-backend`
+   - Update nginx to proxy /api to localhost:8081
 
 ---
 
-Last updated: 2026-02-11
+Last updated: 2026-02-12
