@@ -44,6 +44,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth -> oauth
+                        .loginProcessingUrl("/api/auth/google/callback")
                         .successHandler(oAuth2SuccessHandler)
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
