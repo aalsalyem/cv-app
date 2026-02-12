@@ -44,10 +44,16 @@ body {
   position: relative;
 }
 
-.theme-toggle {
+.top-buttons {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.theme-toggle {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 2rem;
@@ -57,10 +63,27 @@ body {
   font-size: 0.9rem;
   font-weight: 500;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 100;
 }
 
 .theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.admin-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 2rem;
+  background: var(--accent-secondary);
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 15px var(--shadow);
 }
@@ -329,9 +352,13 @@ body {
     flex-direction: column;
   }
 
-  .theme-toggle {
+  .top-buttons {
     top: 0.5rem;
     right: 0.5rem;
+  }
+
+  .theme-toggle,
+  .admin-button {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }

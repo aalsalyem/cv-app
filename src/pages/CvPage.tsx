@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import profilePhoto from '../assets/profile.jpg';
 
 function CvPage() {
+  const { user } = useAuth();
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;
@@ -14,9 +17,14 @@ function CvPage() {
 
   return (
     <div className="cv-container">
-      <button className="theme-toggle" onClick={() => setIsDark(!isDark)}>
-        {isDark ? 'Light' : 'Dark'}
-      </button>
+      <div className="top-buttons">
+        <button className="theme-toggle" onClick={() => setIsDark(!isDark)}>
+          {isDark ? 'Light' : 'Dark'}
+        </button>
+        {user?.isAdmin && (
+          <Link to="/console" className="admin-button">Admin</Link>
+        )}
+      </div>
 
       <header className="header">
         <img src={profilePhoto} alt="Abdulaziz Alsalyem" className="profile-photo" />
