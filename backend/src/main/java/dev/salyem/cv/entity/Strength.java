@@ -9,7 +9,7 @@ import lombok.Data;
 public class Strength {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String name;
 

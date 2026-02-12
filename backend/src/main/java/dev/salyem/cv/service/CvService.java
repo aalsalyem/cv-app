@@ -63,7 +63,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteWorkExperience(Long id) {
+    public void deleteWorkExperience(Integer id) {
         workExperienceRepository.deleteById(id);
     }
 
@@ -73,7 +73,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteEducation(Long id) {
+    public void deleteEducation(Integer id) {
         educationRepository.deleteById(id);
     }
 
@@ -83,7 +83,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteSkill(Long id) {
+    public void deleteSkill(Integer id) {
         skillRepository.deleteById(id);
     }
 
@@ -93,7 +93,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteCertificate(Long id) {
+    public void deleteCertificate(Integer id) {
         certificateRepository.deleteById(id);
     }
 
@@ -103,7 +103,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteLanguage(Long id) {
+    public void deleteLanguage(Integer id) {
         languageRepository.deleteById(id);
     }
 
@@ -113,7 +113,7 @@ public class CvService {
     }
 
     @Transactional
-    public void deleteStrength(Long id) {
+    public void deleteStrength(Integer id) {
         strengthRepository.deleteById(id);
     }
 }

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WorkExperienceRepository extends JpaRepository<WorkExperience, Long> {
+public interface WorkExperienceRepository extends JpaRepository<WorkExperience, Integer> {
     List<WorkExperience> findAllByOrderBySortOrderAsc();
 }

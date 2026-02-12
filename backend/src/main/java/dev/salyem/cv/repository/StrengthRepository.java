@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StrengthRepository extends JpaRepository<Strength, Long> {
+public interface StrengthRepository extends JpaRepository<Strength, Integer> {
     List<Strength> findAllByOrderBySortOrderAsc();
 }

@@ -27,13 +27,13 @@ public class AdminController {
     }
 
     @PutMapping("/work-experience/{id}")
-    public ResponseEntity<WorkExperience> updateWorkExperience(@PathVariable Long id, @RequestBody WorkExperience experience) {
+    public ResponseEntity<WorkExperience> updateWorkExperience(@PathVariable Integer id, @RequestBody WorkExperience experience) {
         experience.setId(id);
         return ResponseEntity.ok(cvService.saveWorkExperience(experience));
     }
 
     @DeleteMapping("/work-experience/{id}")
-    public ResponseEntity<Void> deleteWorkExperience(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteWorkExperience(@PathVariable Integer id) {
         cvService.deleteWorkExperience(id);
         return ResponseEntity.noContent().build();
     }
@@ -45,13 +45,13 @@ public class AdminController {
     }
 
     @PutMapping("/education/{id}")
-    public ResponseEntity<Education> updateEducation(@PathVariable Long id, @RequestBody Education education) {
+    public ResponseEntity<Education> updateEducation(@PathVariable Integer id, @RequestBody Education education) {
         education.setId(id);
         return ResponseEntity.ok(cvService.saveEducation(education));
     }
 
     @DeleteMapping("/education/{id}")
-    public ResponseEntity<Void> deleteEducation(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteEducation(@PathVariable Integer id) {
         cvService.deleteEducation(id);
         return ResponseEntity.noContent().build();
     }
@@ -63,13 +63,13 @@ public class AdminController {
     }
 
     @PutMapping("/skills/{id}")
-    public ResponseEntity<Skill> updateSkill(@PathVariable Long id, @RequestBody Skill skill) {
+    public ResponseEntity<Skill> updateSkill(@PathVariable Integer id, @RequestBody Skill skill) {
         skill.setId(id);
         return ResponseEntity.ok(cvService.saveSkill(skill));
     }
 
     @DeleteMapping("/skills/{id}")
-    public ResponseEntity<Void> deleteSkill(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSkill(@PathVariable Integer id) {
         cvService.deleteSkill(id);
         return ResponseEntity.noContent().build();
     }
@@ -81,13 +81,13 @@ public class AdminController {
     }
 
     @PutMapping("/certificates/{id}")
-    public ResponseEntity<Certificate> updateCertificate(@PathVariable Long id, @RequestBody Certificate certificate) {
+    public ResponseEntity<Certificate> updateCertificate(@PathVariable Integer id, @RequestBody Certificate certificate) {
         certificate.setId(id);
         return ResponseEntity.ok(cvService.saveCertificate(certificate));
     }
 
     @DeleteMapping("/certificates/{id}")
-    public ResponseEntity<Void> deleteCertificate(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCertificate(@PathVariable Integer id) {
         cvService.deleteCertificate(id);
         return ResponseEntity.noContent().build();
     }
@@ -99,13 +99,13 @@ public class AdminController {
     }
 
     @PutMapping("/languages/{id}")
-    public ResponseEntity<Language> updateLanguage(@PathVariable Long id, @RequestBody Language language) {
+    public ResponseEntity<Language> updateLanguage(@PathVariable Integer id, @RequestBody Language language) {
         language.setId(id);
         return ResponseEntity.ok(cvService.saveLanguage(language));
     }
 
     @DeleteMapping("/languages/{id}")
-    public ResponseEntity<Void> deleteLanguage(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLanguage(@PathVariable Integer id) {
         cvService.deleteLanguage(id);
         return ResponseEntity.noContent().build();
     }
@@ -117,13 +117,13 @@ public class AdminController {
     }
 
     @PutMapping("/strengths/{id}")
-    public ResponseEntity<Strength> updateStrength(@PathVariable Long id, @RequestBody Strength strength) {
+    public ResponseEntity<Strength> updateStrength(@PathVariable Integer id, @RequestBody Strength strength) {
         strength.setId(id);
         return ResponseEntity.ok(cvService.saveStrength(strength));
     }
 
     @DeleteMapping("/strengths/{id}")
-    public ResponseEntity<Void> deleteStrength(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteStrength(@PathVariable Integer id) {
         cvService.deleteStrength(id);
         return ResponseEntity.noContent().build();
     }
