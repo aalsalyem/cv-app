@@ -4,29 +4,66 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, #0a0a0f 0%, #12121a 100%);
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .coming-soon-text {
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 8vw, 4rem);
   font-weight: 700;
   color: #c9a962;
   text-transform: uppercase;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   text-shadow: 0 0 20px rgba(201, 169, 98, 0.3);
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .coming-soon-footer {
   position: absolute;
   bottom: 2rem;
   color: #6a6a7a;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
+  font-size: clamp(0.7rem, 2.5vw, 1rem);
+  letter-spacing: 0.05em;
+  text-align: center;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+/* iPad and tablets */
+@media (max-width: 1024px) {
   .coming-soon-text {
-    font-size: 2rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* iPhone and mobile */
+@media (max-width: 480px) {
+  .coming-soon-container {
+    padding: 0.5rem;
+  }
+
+  .coming-soon-text {
+    letter-spacing: 0.1em;
+  }
+
+  .coming-soon-footer {
+    bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .coming-soon-text {
+    font-size: clamp(1.2rem, 6vh, 2.5rem);
+  }
+
+  .coming-soon-footer {
+    bottom: 1rem;
   }
 }
