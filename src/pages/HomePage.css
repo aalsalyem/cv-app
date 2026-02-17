@@ -1,0 +1,32 @@
+.coming-soon-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0f 0%, #12121a 100%);
+}
+
+.coming-soon-text {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #c9a962;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 20px rgba(201, 169, 98, 0.3);
+}
+
+.coming-soon-footer {
+  position: absolute;
+  bottom: 2rem;
+  color: #6a6a7a;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .coming-soon-text {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+  }
+}
