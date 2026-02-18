@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b8975f"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#b8975f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left line -->
+  <line x1="20" y1="50" x2="55" y2="50" stroke="url(#gold)" stroke-width="1"/>
+
+  <!-- AMS text -->
+  <text x="120" y="58" font-family="Didot, 'Bodoni MT', 'Times New Roman', serif" font-size="42" font-weight="400" fill="url(#gold)" text-anchor="middle" letter-spacing="18">AMS</text>
+
+  <!-- Right line -->
+  <line x1="185" y1="50" x2="220" y2="50" stroke="url(#gold)" stroke-width="1"/>
+</svg>
